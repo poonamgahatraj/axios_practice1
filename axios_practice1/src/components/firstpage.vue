@@ -41,7 +41,31 @@
     <div v-for="item in  api_data.results " style="display:flex; justify-content: center;font-size: 20px;color:black;">
     <p style="margin-right: 15px;"><b>{{ item.name.first }}</b></p>
     <p><b>{{ item.name.last }}</b></p>
+
+    
     </div>
+    <div v-for="item in  api_data.results " >
+        <p style="display: flex;
+    justify-content: center;font-size: 20px;color:#999999">My email address is</p>
+    <p style="display:flex; justify-content: center;font-size: 20px;color:black;">{{ item.email }}</p>
+    </div>
+
+    <div v-for="item in  api_data.results " >
+        <p style="display: flex;
+    justify-content: center;font-size: 20px;color:#999999">My birthday is</p>
+    <p style="display:flex; justify-content: center;font-size: 20px;color:black;">{{ item.dob.date }}</p>
+    </div>
+
+    <div v-for="item in  api_data.results " >
+        <p style="display: flex;
+    justify-content: center;font-size: 20px;color:#999999">My address is</p>
+    <div style="display:flex;justify-content: center;font-size: 20px;">
+        <p style="display:flex; justify-content: center;font-size: 20px;color:black;margin-right:10px;">{{ item.location.street.number }}</p>
+         <p style="display:flex; justify-content: center;font-size: 20px;color:black;">{{ item.location.street.name }}</p>
+    </div>
+    
+    </div>
+
 
    
             </div >
@@ -116,6 +140,7 @@ height:500px;
 .main-content{
     background:#F9F9F9;
     width:60%;
+    height:70%;
    margin:auto;
    
     position:absolute;
