@@ -35,28 +35,29 @@
                 </div>
             </div>
         </div>
-            <div >
+            <div v-if="show_details" >
                 <p style="display: flex;
     justify-content: center;font-size: 20px;color:#999999">Hi, My name is</p>
-    <div v-for="item in  api_data.results " style="display:flex; justify-content: center;font-size: 20px;color:black;">
+    <div v-for="item in  api_data.results " style="display:flex; justify-content: center;font-size: 20px;color:black;" >
     <p style="margin-right: 15px;"><b>{{ item.name.first }}</b></p>
     <p><b>{{ item.name.last }}</b></p>
 
     
     </div>
-    <div v-for="item in  api_data.results " >
+    </div>
+    <div v-for="item in  api_data.results "  v-if=" show_email" >
         <p style="display: flex;
     justify-content: center;font-size: 20px;color:#999999">My email address is</p>
     <p style="display:flex; justify-content: center;font-size: 20px;color:black;">{{ item.email }}</p>
     </div>
 
-    <div v-for="item in  api_data.results " >
+    <div v-for="item in  api_data.results " v-if="show_birthday" >
         <p style="display: flex;
     justify-content: center;font-size: 20px;color:#999999">My birthday is</p>
     <p style="display:flex; justify-content: center;font-size: 20px;color:black;">{{ item.dob.date }}</p>
     </div>
 
-    <div v-for="item in  api_data.results " >
+    <div v-for="item in  api_data.results " v-if="show_address">
         <p style="display: flex;
     justify-content: center;font-size: 20px;color:#999999">My address is</p>
     <div style="display:flex;justify-content: center;font-size: 20px;">
@@ -65,14 +66,25 @@
     </div>
     
     </div>
+    <div>
+    <ul style="list-style-type: none; display:flex;font-size: 20px; justify-content: center;    cursor: pointer;">
+        <li  @mouseover=" showbutton('profile')">Profile</li>
+        <li   @mouseover=" showbutton('Email')">Email</li>
+        <li  @mouseover=" showbutton('birthday')">Birthday</li>
+        <li  @mouseover=" showbutton('Address')">Address</li>
+    </ul>
+   </div>
 
+   </div>
 
    
-            </div >
+    </div >
 
-            
-        </div>
-    </div>
+
+
+         
+    
+    
 </template>
 
 
@@ -83,15 +95,17 @@ export default{
         return{
             
             api_data:{},
+            show_details:true,
+            show_email:false,
+            show_birthday:false,
+            show_address:false,
+            
+            tabbed_button: "home"
    
-    "info": {
-        "seed": "83a946a9cbec449e",
-        "results": 1,
-        "page": 1,
-        "version": "1.4"
-    }
+   
 }
         },
+
 
 
     mounted () {
@@ -100,6 +114,36 @@ export default{
       .then(response =>{
         this.api_data=response.data
       } )
+  },
+
+  methods:
+  {
+    showbutton(clicked_button){
+        this.tabbed_button=clicked_button
+        console.log("the button clicked is " + clicked_button)
+
+        if(clicked_button=='profile')
+        {
+            this.show_details=!this.show_details
+        }
+
+        if(clicked_button=='Email')
+        {
+            this. show_email=!this. show_email
+        }
+
+        if(clicked_button=='birthday')
+        {
+            this. show_birthday=!this.show_birthday
+        }
+
+        if(clicked_button=='Address')
+        {
+            this.  show_address=!this. show_address
+        }
+
+        
+    }
   }
 
 }
