@@ -27,6 +27,7 @@
         </div>
 
         <div class="main-content">
+        <div class="sub-content">
             <div style="border:1px solid#999999;width:108px;border-radius:50%;margin:auto; margin-top: 5%;">
             <div   v-for="item in  api_data.results" style="border:3px solid white;height:100px;width:100px;border-radius:50%;margin:auto;" >
                 <div>
@@ -66,7 +67,10 @@
     </div>
     
     </div>
-    <div>
+   
+
+   </div>
+   <div>
     <ul style="list-style-type: none; display:flex;font-size: 20px; justify-content: center;    cursor: pointer;">
         <li  @mouseover=" showbutton('profile')">Profile</li>
         <li   @mouseover=" showbutton('Email')">Email</li>
@@ -75,9 +79,7 @@
     </ul>
    </div>
 
-   </div>
-
-   
+        </div>
     </div >
 
 
@@ -129,17 +131,17 @@ export default{
 
         if(clicked_button=='Email')
         {
-            this. show_email=!this. show_email
+            this.show_email=!this. show_email
         }
 
         if(clicked_button=='birthday')
         {
-            this. show_birthday=!this.show_birthday
+            this.show_birthday=!this.show_birthday
         }
 
         if(clicked_button=='Address')
         {
-            this.  show_address=!this. show_address
+            this.show_address=!this. show_address
         }
 
         
@@ -190,5 +192,11 @@ height:500px;
     position:absolute;
     left: 21%;
     top: 61%;
+}
+
+.sub-content{
+   
+    height: 70%;
+    overflow: hidden;
 }
 </style>
